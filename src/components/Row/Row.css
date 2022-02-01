@@ -116,6 +116,9 @@
 	.movie-img {
 		max-height: 120px;
 	}
+	.row h3 {
+		margin-left: 0;
+	}
 	.top-row {
 		max-height: 200px;
 	}
