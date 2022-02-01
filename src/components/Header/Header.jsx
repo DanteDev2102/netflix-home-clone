@@ -16,7 +16,7 @@ const Header = () => {
 	}, []);
 
 	return (
-		<header className={`header ${darkbar && 'dark'}`}>
+		<header className={`header ${darkbar ? 'dark' : ''}`}>
 			<div className="logo">
 				<img src={Image} alt="Netflix logo" />
 			</div>
