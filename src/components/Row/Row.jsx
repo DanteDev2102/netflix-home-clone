@@ -1,10 +1,10 @@
 import { useState, useEffect } from 'react';
 import axios from '../../axios/create';
+import Movies from '../Movies/Movies';
 
 import './Row.css';
 
-const Row = ({ title, endParam, topRow }) => {
-	const base_url = 'https://image.tmdb.org/t/p/original/';
+const Row = ({ title, endParam }) => {
 	const [movies, setMovies] = useState([]);
 	const [translate, setTranslate] = useState(0);
 
@@ -17,9 +17,12 @@ const Row = ({ title, endParam, topRow }) => {
 	const handleTranslate = (value) => {
 		if (value > 0 && translate === 0) {
 			return null;
-		} else {
-			setTranslate(translate + value);
 		}
+		if (value < 0 && translate <= -360) {
+			return null;
+		}
+		setTranslate(translate + value);
+		console.log(translate);
 	};
 
 	useEffect(() => {
@@ -32,7 +35,7 @@ const Row = ({ title, endParam, topRow }) => {
 
 			<section className="movie-row">
 				<div className="left-arrow">
-					<button onClick={() => handleTranslate(500)}>
+					<button onClick={() => handleTranslate(20)}>
 						<i
 							className="fa fa-arrow-left"
 							aria-hidden="true"
@@ -40,51 +43,19 @@ const Row = ({ title, endParam, topRow }) => {
 					</button>
 				</div>
 				<div className="movies-container">
-					<div
+					<article
 						className="movies"
 						style={{
-							transform: `translateX(${translate}px)`
+							transform: `translateX(${translate}%)`
 						}}
 					>
-						{topRow &&
-							movies.map((movie) => (
-								<img
-									key={movie.id}
-									className={`movie-img ${
-										topRow && 'top-row'
-									}`}
-									src={`${base_url}${movie.poster_path}`}
-									alt={movie.title}
-								/>
-							))}
-
-						{!topRow &&
-							movies.map((movie) => (
-								<div
-									className="named-row"
-									key={movie.id}
-								>
-									<img
-										className={`movie-img ${
-											topRow && 'top-row'
-										}`}
-										src={`${base_url}${movie.backdrop_path}`}
-										alt={movie.title}
-									/>
-
-									<p>
-										{movie
-											? movie.title ||
-											  movie.name ||
-											  movie.original_name
-											: null}
-									</p>
-								</div>
-							))}
-					</div>
+						{movies.map((movie) => (
+							<Movies {...movie} />
+						))}
+					</article>
 				</div>
 				<div className="right-arrow">
-					<button onClick={() => handleTranslate(-500)}>
+					<button onClick={() => handleTranslate(-20)}>
 						<i
 							className="fa fa-arrow-right"
 							aria-hidden="true"
