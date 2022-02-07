@@ -7,9 +7,9 @@
 	flex-direction: column;
 	color: #fff;
 	position: relative;
-	background-size: 'cover';
-	background-position: 'center center';
-	background-repeat: 'no-repeat';
+	background-size: cover;
+	background-position: center center;
+	background-repeat: no-repeat;
 }
 
 .banner-info {

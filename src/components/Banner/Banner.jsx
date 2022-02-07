@@ -12,7 +12,7 @@ const Banner = ({ endParam }) => {
 	};
 
 	useEffect(() => {
-		async function getMovie() {
+		const getMovie = async () => {
 			const response = await axios.get(endParam);
 			setMovie(
 				response.data.results[
@@ -22,7 +22,7 @@ const Banner = ({ endParam }) => {
 					)
 				]
 			);
-		}
+		};
 
 		getMovie();
 	}, [endParam]);

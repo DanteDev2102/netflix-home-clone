@@ -24,7 +24,6 @@ const Row = ({ title, endParam, topRow }) => {
 
 	useEffect(() => {
 		getMovies();
-		console.log('hola');
 	}, [endParam]);
 
 	return (
