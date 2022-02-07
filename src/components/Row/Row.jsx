@@ -22,7 +22,6 @@ const Row = ({ title, endParam }) => {
 			return null;
 		}
 		setTranslate(translate + value);
-		console.log(translate);
 	};
 
 	useEffect(() => {

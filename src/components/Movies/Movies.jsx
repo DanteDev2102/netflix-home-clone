@@ -8,6 +8,7 @@ const Movies = ({ name, id, backdrop_path, title }) => {
 				className="movie-img"
 				src={`${base_url}${backdrop_path}`}
 				alt={title}
+				loading="lazy"
 			/>
 
 			<p>{name || title}</p>
